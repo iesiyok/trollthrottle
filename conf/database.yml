@@ -1,0 +1,35 @@
+
+default: &default
+  adapter: mysql2
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  adapter: mysql2
+  encoding: utf8
+  host: db
+  database: trollthrottle
+  pool: 200
+  username: root
+  password: rootpassword
+  reconnect: true
+  timeout: 5000
+
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  host: db
+  database: trollthrottle
+  pool: 200
+  username: root
+  password: rootpassword
+  reconnect: true
+  timeout: 5000
+
