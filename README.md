@@ -60,8 +60,9 @@ such that:
 
 		-	The splitted raw data must be placed in the `data/de/raw` directory.
 
-		-	For determining the list of new users is presented in the same query file. The new users must not be splitted and it must be 		placed in `new_users.json` file in `data/de/raw` directory. Also, the file should not include `[` in the beginning of the file and `]` in the end. Each record in the file must be in JSON format and the records must be splitted only with newline character. 
-			e.g. {"author": "abc"}
+		-	For determining the list of new users, a query is given in the same query file. The new users must not be splitted and it must be placed in `new_users.json` file in `data/de/raw` directory. Also, the file should not include `[` in the beginning of the file and `]` in the end. Each record in the file must be in JSON format and the records must be splitted only with newline character. 
+			e.g. 
+				{"author": "abc"}
 				{"author": "def"}
 
 
