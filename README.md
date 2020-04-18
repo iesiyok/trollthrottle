@@ -64,7 +64,8 @@ such that:
 	-	The splitted raw data must be placed in the `data/de/raw` directory.
 
 	-	For determining the list of new users, a query is given in the same query file. 
-		The new users must not be splitted and must be placed in `new_users.json` file in `data/de/raw` directory. 
+		The new users must not be splitted, and 
+		it must be placed in `new_users.json` file in `data/de/raw` directory. 
 		Also, the file should not include `[` in the beginning of the file and `]` in the end. 
 		Each record in the file must be in JSON format and the records must be splitted only with newline. 
 		e.g. 
@@ -94,27 +95,27 @@ such that:
 	-	Add new_user information to the system: 
 		the command below adds new author information for scenario name `de`.
 
-		>> `docker-compose exec simulator bash -c 'cd /simulator && node sim_new_users.js de'`
+	>> `docker-compose exec simulator bash -c 'cd /simulator && node sim_new_users.js de'`
 
 	-	Create cookies and identity information about the authors in the raw data: 
 		the command below spawns 8 child processes and creates cookies for each author for `de` scenario.
 
-		>> `docker-compose exec simulator bash -c 'cd /simulator && node sim_id_spawner.js 8 de'`
+	>> `docker-compose exec simulator bash -c 'cd /simulator && node sim_id_spawner.js 8 de'`
 
 	-	Create precomputation for each comments in the raw data and save in the `precomp` directory: 
 		the command below spans 8 child processes where each child process uses the corresponding raw data 
 		and computes precomputation and saves into `data/de/precomp` directory with `prec_#nr.json` format.
 
-		>> `docker-compose exec simulator bash -c 'cd /simulator && node sim_prec_spawner.js 8 de'`
+	>> `docker-compose exec simulator bash -c 'cd /simulator && node sim_prec_spawner.js 8 de'`
 
 <h4>	5.	Run simulation:</h4>
 
-	-	The command below spans 8 child processes and each child process takes the corresponding precomputation 
+	-	The command below spans 8 child processes, each process takes the corresponding precomputation 
 		and schedules a commenting action. The schedule is based on the date given in the command. 
 		The date given in the example below will start the commenting action timer at '15 April 2020 13:10'. 
 		The sequence for months starts from 0, hence the sequence number for April is given 3. 
 
-		>> `docker-compose exec simulator bash -c 'cd /simulator && node simulation_spawner.js 8 de 2020 3 15 13 10'`
+	>> `docker-compose exec simulator bash -c 'cd /simulator && node simulation_spawner.js 8 de 2020 3 15 13 10'`
 
 <h4>	6.	Simulation results:</h4>
 
