@@ -29,15 +29,15 @@ For managing and dedicating resources, we use 'taskset' tool in the docker conta
 
 *	For assigning cores to applications, change the core-id in the `conf/*_startup.sh` files,
 such that:
-	1.	in the 'id_verifier_startup.sh' file:
+	-	in the 'id_verifier_startup.sh' file:
 		taskset -c $core-id $command
-	2.	in the 'issuer_startup.sh' file:
+	-	in the 'issuer_startup.sh' file:
 		taskset -c $core-id $command
-	3.	in the 'ledger_startup.sh' file:
+	-	in the 'ledger_startup.sh' file:
 		taskset -c $core-id $command
-	4.	in the 'sign_verifier_startup.sh' file:
+	-	in the 'sign_verifier_startup.sh' file:
 		taskset -c $core-id $command
-	5.	in the 'website_startup.sh' file:
+	-	in the 'website_startup.sh' file:
 		taskset -c $core-id $command
 
 *	The simulation requires downloading data from a Bigquery dataset, https://bigquery.cloud.google.com/dataset/fh-bigquery:reddit_comments.
@@ -108,18 +108,21 @@ such that:
 	-	Add new_user information to the system: 
 		the command below adds new author information for scenario name `de`.
 
-		`docker-compose exec simulator bash -c 'cd /simulator && node sim_new_users.js de'`
+		`docker-compose exec simulator bash -c \ 
+			'cd /simulator && node sim_new_users.js de'`
 
 	-	Create cookies and identity information about the authors in the raw data: 
 		the command below spawns 8 child processes and creates cookies for each author for `de` scenario.
 
-		`docker-compose exec simulator bash -c 'cd /simulator && node sim_id_spawner.js 8 de'`
+		`docker-compose exec simulator bash -c \
+			'cd /simulator && node sim_id_spawner.js 8 de'`
 
 	-	Create precomputation for each comments in the raw data and save in the `precomp` directory: 
 		the command below spans 8 child processes where each child process uses the corresponding raw data 
 		and computes precomputation and saves into `data/de/precomp` directory with `prec_#nr.json` format.
 
-		`docker-compose exec simulator bash -c 'cd /simulator && node sim_prec_spawner.js 8 de'`
+		`docker-compose exec simulator bash -c \ 
+			'cd /simulator && node sim_prec_spawner.js 8 de'`
 
 <h4>	5.	Run simulation:</h4>
 
@@ -132,7 +135,8 @@ such that:
 		The date given in the example below will start the commenting action timer at '15 April 2020 13:10'. 
 		The sequence for months starts from 0, hence the sequence number for April is given 3. 
 
-		`docker-compose exec simulator bash -c 'cd /simulator && node simulation_spawner.js 8 de 2020 3 15 13 10'`
+		`docker-compose exec simulator bash -c \ 
+			'cd /simulator && node simulation_spawner.js 8 de 2020 3 15 13 10'`
 
 <h4>	6.	Simulation results:</h4>
 
