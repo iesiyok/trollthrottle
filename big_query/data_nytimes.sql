@@ -1,4 +1,6 @@
--- 1. [For information], to receive the whole starting and ending timestamps of a day in a month. 
+-- 0. [For information], to receive the whole starting and ending timestamps of a day in a month. 
+
+-- IGNORE this query for simulation data!
 
 
 SELECT
@@ -19,7 +21,7 @@ SELECT
 
 
 
--- 2. To receive the data related to nytimes for two months 
+-- 1. To receive the data related to nytimes for two months 
 
 
 	with p AS(
@@ -37,8 +39,8 @@ SELECT
 	where p.domain = 'nytimes.com' ORDER BY c.created_utc ASC
 
 
--- 3. Save data to a table say 'trollthrottle.bq.nytimes'
--- 4. Aggregate the results to one day with the following script
+-- 2. Save data to a table say 'trollthrottle.bq.nytimes'
+-- 3. Aggregate the results to one day with the following script
 
   SELECT (case when (created_utc - 1561852800) < 86400 AND (created_utc - 1561852800)>=0 then created_utc - 1561852800
   when (created_utc - 1561766400) < 86400 AND (created_utc - 1561766400)>=0 then created_utc - 1561766400
@@ -105,21 +107,21 @@ SELECT
   FROM `trollthrottle.bq.nytimes` 
       order by ts
 
--- 3. Save data to a table say 'trollthrottle.bq.nytimes_1'
+-- 4. Save data to a table say 'trollthrottle.bq.nytimes_1'
 
 select ts, author, ROW_NUMBER() OVER (PARTITION BY author ORDER BY ts) as seq, body 
       FROM `trollthrottle.bq.nytimes_1`  
       order by ts
 
 
--- 4. The result is the data, you can store it to a google buckle and download as json/gzip
--- 5. Save as data_file into 'data/nytimes/raw/data_file'
+-- 5. The result is the data, you can store it to a google buckle and download as json/gzip
+-- 6. Save as data_file into 'data/nytimes/raw/data_file'
 
 
 
 
 
--- 6. Determine NEW USERS
+-- 7. Determine NEW USERS
 
 select DISTINCT author from `trollthrottle.bq.nytimes_1`  where author NOT IN 
 (
@@ -247,6 +249,6 @@ select DISTINCT author from `fh-bigquery.reddit_comments.2019_03`
 UNION ALL 
 select DISTINCT author from `fh-bigquery.reddit_comments.2019_04`
 )
---7. Download NEW USERS as new_users.json file into 'data/nytimes/raw/new_users.json'
+-- 8. Download NEW USERS as new_users.json file into 'data/nytimes/raw/new_users.json'
 
 

@@ -1,5 +1,7 @@
--- 1. [For information], to receive the whole starting and ending timestamps of a day in a month. 
+-- 0. [For information], to receive the whole starting and ending timestamps of a day in a month. 
 
+
+-- IGNORE this query for simulation data!
 
 SELECT
     DATE(TIMESTAMP_SECONDS(r.ts_start)) AS date, r.ts_start as ts_start, r.ts_start+86400 as ts_end 
@@ -18,7 +20,7 @@ SELECT
   GROUP BY r.ts_start
 
 
-  -- 2. To receive the comments in order for subreddt 'de'
+  -- 1. To receive the comments in order for subreddt 'de'
 
   SELECT (case when (created_utc - 1561852800) < 86400 AND (created_utc - 1561852800)>=0 then created_utc - 1561852800
 when (created_utc - 1561766400) < 86400 AND (created_utc - 1561766400)>=0 then created_utc - 1561766400
@@ -55,8 +57,8 @@ END) as ts, author, body
       where subreddit='de'
       order by ts
 
--- 3. Save to a table, say name 'trollthrottle.bq.de_1906'
--- 4. Query the table:
+-- 2. Save to a table, say name 'trollthrottle.bq.de_1906'
+-- 3. Query the table:
 
 
 select ts, author, ROW_NUMBER() OVER (PARTITION BY author ORDER BY ts) as seq, body 
@@ -64,13 +66,13 @@ select ts, author, ROW_NUMBER() OVER (PARTITION BY author ORDER BY ts) as seq, b
       order by ts
 
 
--- 5. The result is the data, you can store it to a google buckle and download as JSON/gzip
--- 6. Save as data_file into 'data/de/raw/data_file'
+-- 4. The result is the data, you can store it to a google buckle and download as JSON/gzip
+-- 5. Save as data_file into 'data/de/raw/data_file'
 
 
 
 
--- 7. Determine NEW USERS
+-- 6. Determine NEW USERS
 
 select DISTINCT author from `trollthrottle.bq.de_1906`  where author NOT IN 
 (
@@ -200,4 +202,4 @@ select DISTINCT author from `fh-bigquery.reddit_comments.2019_04`
 UNION ALL
 select DISTINCT author from `fh-bigquery.reddit_comments.2019_05` 
 )
---8. Download NEW USERS as new_users.json file into 'data/de/raw/new_users.json'
+-- 7. Download NEW USERS as new_users.json file into 'data/de/raw/new_users.json'

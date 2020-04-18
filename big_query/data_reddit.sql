@@ -21,15 +21,22 @@ where created_utc > 1561593599 and created_utc < 1561680000
 ORDER BY created_utc
 
 
--- 3. Save data to a table say 'trollthrottle.bq.all'
--- 4. The resulting table is the data, you can store it to a google buckle and download as json/gzip
--- 5. Save as data_file into 'data/reddit/raw/data_file'
+-- 3. Save data to a table say 'trollthrottle.bq.reddit'.
+-- 4. Run the following
+
+
+select ts, author, ROW_NUMBER() OVER (PARTITION BY author ORDER BY ts) as seq, body 
+      FROM `trollthrottle.bq.reddit`  
+      order by ts
+
+-- 5. The resulting table is the data, you can store it to a google buckle and download as json/gzip
+-- 6. Save as data_file into 'data/reddit/raw/data_file'
 
 
 
--- 6. Determine NEW USERS
+-- 7. Determine NEW USERS
 
-select DISTINCT author from `trollthrottle.bq.all`  where author NOT IN 
+select DISTINCT author from `trollthrottle.bq.reddit`  where author NOT IN 
 (
 select DISTINCT author from `fh-bigquery.reddit_comments.2005` 
 UNION ALL 
@@ -159,4 +166,4 @@ select DISTINCT author from `fh-bigquery.reddit_comments.2019_05`
 UNION ALL 
 select DISTINCT author from `fh-bigquery.reddit_comments.2019_06` where created_utc < 1561593599 
 )
---7. Download NEW USERS as new_users.json file into 'data/reddit/raw/new_users.json'
+--8. Download NEW USERS as new_users.json file into 'data/reddit/raw/new_users.json'
