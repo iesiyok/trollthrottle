@@ -38,10 +38,11 @@ See for more options: http://man7.org/linux/man-pages/man1/taskset.1.html
 	Therefore, the instructions for downloading data and running the simulation are based on splitting data into multiple pieces and parallelising the applications. 
 
 *	There are three different scenarios for running simulation, for more information about how we select the scenarios please refer to the paper.
+
 	Scenario-1: National newspaper (`data/de` 168K comments) (scenario name : `de`).
 
 	Scenario-2: International newspaper (`data/nytimes` 268K comments) (scenario name : `nytimes`).
-	
+
 	Scenario-3: Reddit (`data/reddit` 4.9M comments) (scenario name : `reddit`).
 
 <h2>	Example: Simulation on Scenario-1:</h2>
