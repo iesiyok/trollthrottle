@@ -148,6 +148,7 @@ See for more options: http://man7.org/linux/man-pages/man1/taskset.1.html
 		aggregate them with the ones in `data/de/result` folder.
  
  <h4>	7.	Stop Application:</h4>
+ 
  	-	To stop the applications you can use the command below.
 
  		`docker-compose down` 
