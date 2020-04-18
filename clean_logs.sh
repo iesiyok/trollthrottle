@@ -23,4 +23,8 @@ touch logs/sign_verifier/unicorn.stdout.log ;\
 rm -f logs/nginx/error.log ;\
 touch logs/nginx/error.log ;\
 
+rm -f data/de/result/*.log ;\
+rm -f data/nytimes/result/*.log ;\
+rm -f data/reddit/result/*.log ;\
+
 echo "Logs deleted" ;
