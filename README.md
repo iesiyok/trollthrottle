@@ -29,16 +29,15 @@ For managing and dedicating resources, we use 'taskset' tool in the docker conta
 
 *	For assigning cores to applications, change the core-id in the `conf/*_startup.sh` files,
 such that:
-	-	in the 'id_verifier_startup.sh' file:
-		taskset -c $core-id $command
-	-	in the 'issuer_startup.sh' file:
-		taskset -c $core-id $command
-	-	in the 'ledger_startup.sh' file:
-		taskset -c $core-id $command
-	-	in the 'sign_verifier_startup.sh' file:
-		taskset -c $core-id $command
-	-	in the 'website_startup.sh' file:
-		taskset -c $core-id $command
+	-	in the 'id_verifier_startup.sh' file:	taskset -c $core-id $command
+	
+	-	in the 'issuer_startup.sh' file:		taskset -c $core-id $command
+	
+	-	in the 'ledger_startup.sh' file:		taskset -c $core-id $command
+	
+	-	in the 'sign_verifier_startup.sh' file:	taskset -c $core-id $command
+	
+	-	in the 'website_startup.sh' file:		taskset -c $core-id $command
 
 *	The simulation requires downloading data from a Bigquery dataset, https://bigquery.cloud.google.com/dataset/fh-bigquery:reddit_comments.
 	The SQL queries for retrieving data based on scenario are presented in the `big_query` directory. The simulation is designed to be multithreaded since a single thread application can support only a limited load.
