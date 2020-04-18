@@ -84,12 +84,16 @@ See for more options: http://man7.org/linux/man-pages/man1/taskset.1.html
 
 <h4>	3.	Build the applications:</h4>
 
-	-	Run `docker-compose up --build -d` in the main directory. 
-		This will build the trollthrottle applications, mysql server, mysql admin, 
+	-	To build the applications, run the command below in the main directory. 
+
+		`docker-compose up --build -d`
+
+	-	This will build the trollthrottle applications, mysql server, mysql admin, 
 		nginx web server and the simulator. 
 		It might take a long time in the first run. 
 		But changes in the data and the simulation code 
 		in the front-end Nodejs applications will not require a new build. 
+		Hence, you can ommit '--build' option if you don't need new build.
 		However, nginx, startup.sh and mysql changes will require a new build. 
 		
 	-	Note also that, the application start might take a bit longer than docker-compose.
@@ -148,7 +152,7 @@ See for more options: http://man7.org/linux/man-pages/man1/taskset.1.html
 		aggregate them with the ones in `data/de/result` folder.
  
  <h4>	7.	Stop Application:</h4>
- 
+
  	-	To stop the applications you can use the command below.
 
  		`docker-compose down` 
