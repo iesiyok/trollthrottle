@@ -25,9 +25,10 @@ ORDER BY created_utc
 -- 4. Run the following
 
 
-select ts, author, ROW_NUMBER() OVER (PARTITION BY author ORDER BY ts) as seq, body 
+select ts, author, ROW_NUMBER() OVER (PARTITION BY author ORDER BY ts) as seq, 
+		ROW_NUMBER() OVER(ORDER BY ts, author) AS index, body 
       FROM `trollthrottle.bq.reddit`  
-      order by ts
+      order by ts, author, seq, index
 
 -- 5. The resulting table is the data, you can store it to a google buckle and download as json/gzip
 -- 6. Save as data_file into 'data/reddit/raw/data_file'
