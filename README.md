@@ -63,12 +63,13 @@ See for more options: http://man7.org/linux/man-pages/man1/taskset.1.html
 	-	For determining the list of new users, a query is given in the same query file. 
 		The new users must not be splitted, and 
 		it must be placed in `new_users.json` file in `data/de/raw` directory. 
-		Also, the file should not include `[` in the beginning of the file and `]` in the end. 
+	
+	-	Also, the 'raw' files should not include `[` in the beginning of the file and `]` in the end. 
 		Each record in the file must be in JSON format and the records must be splitted only with newline. 
 		This is already done by the Bigquery on this day, this note is for possible future changes.
 		e.g. 
-		{"author": "abc"}
-		{"author": "def"}
+		{"author": "abc", "seq": 0 ...}
+		{"author": "def", "seq": 3 ...}
 
 
 <h4>	2.	Assign application settings:</h4>
