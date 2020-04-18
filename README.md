@@ -97,19 +97,19 @@ such that:
 		>> docker-compose exec simulator bash -c 'cd /simulator && node sim_new_users.js de'
 
 	-	Create cookies and identity information about the authors in the raw data: 
-		 the command below spawns 8 child processes and creates cookies for each author for `de` scenario.
+		the command below spawns 8 child processes and creates cookies for each author for `de` scenario.
 
 		>> docker-compose exec simulator bash -c 'cd /simulator && node sim_id_spawner.js 8 de'
 
 	-	Create precomputation for each comments in the raw data and save in the `precomp` directory: 
 		the command below spans 8 child processes where each child process uses the corresponding raw data 
-		and computes the precomputation and saves it into `data/de/precomp` directory with `prec_#nr.json` format.
+		and computes precomputation and saves into `data/de/precomp` directory with `prec_#nr.json` format.
 
 		>> docker-compose exec simulator bash -c 'cd /simulator && node sim_prec_spawner.js 8 de'
 
 <h4>	5.	Run simulation:</h4>
 
-	-	The command below spans 8 child processes where each child process takes the corresponding precomputation 
+	-	The command below spans 8 child processes and each child process takes the corresponding precomputation 
 		and schedules a commenting action. The schedule is based on the date given in the command. 
 		The date given in the example below will start the commenting action timer at '15 April 2020 13:10'. 
 		The sequence for months starts from 0, hence the sequence number for April is given 3. 
