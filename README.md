@@ -30,6 +30,7 @@ For managing and dedicating resources, we use 'taskset' tool in the docker conta
 *	For assigning cores to applications, change the core-id in the `conf/*_startup.sh` files,
 such that: $core_id is one of the CPU cores on your computer. You can also assign ranges. 
 See for more options: http://man7.org/linux/man-pages/man1/taskset.1.html
+		
 		`taskset -c $core-id $command`
 
 *	The simulation requires downloading data from a Bigquery dataset, https://bigquery.cloud.google.com/dataset/fh-bigquery:reddit_comments.
