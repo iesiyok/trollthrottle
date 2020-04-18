@@ -24,7 +24,8 @@ For managing and dedicating resources, we use 'taskset' tool in the docker conta
 	-	You can update tables in `trollthrottle` database by adding/updating scripts to `dump.sql` file,
 	-	You can update mysql connection settings in `locals.js` file for Nodejs applications(simulator),
 	-	You can update web server settings in `nginx.conf` file,
-	-	You can update the certificates and keys under `keys_and_certs` directory, note that the keys that are placed in the directory are published for testing purposes. They cannot be used for production. 
+	-	You can update the certificates and keys under `keys_and_certs` directory, note that the keys that are placed in the directory are published for testing purposes. They cannot be used for production,
+	-	You can customise the `docker-compose.yml` file for i.e. time-zone, kubernetes deployment, mysql root password and exposed ports. 
 
 *	For assigning cores to applications, change the core-id in the `conf/*_startup.sh` files,
 such that:
