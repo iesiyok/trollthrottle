@@ -1,6 +1,6 @@
 <h2>Trollthrottle</h2>
 
-This is the implementation of Trollthrottle protocol. For information about the protocol, please refer to full version of our research paper($link).
+This is the implementation of Trollthrottle protocol. For information about the protocol, please refer to full version of our research paper($link). The source code of this application is available in https://github.com/iesiyok/trollthrottle_src repository. A practical Chrome Browser extension is available in https://github.com/iesiyok/trollthrottle_chrome.
 
 <h2>Getting Started</h2>
 
