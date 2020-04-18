@@ -91,6 +91,17 @@ such that:
 		it might take a long time in the first run, but changes in the data and the simulation code 
 		in the front-end Nodejs applications will not require a new build. 
 		However, nginx, startup.sh and mysql changes will require a new build. 
+		
+	-	Note also that, the application start might take a bit longer than docker-compose.
+		Hence, before starting the simulation, please check if the services work.
+		http://localhost:8080 ~> mysql admin
+		http://localhost:4000 ~> issuer
+		http://localhost:4001 ~> id_verifier
+		http://localhost:4002 ~> ledger
+		http://localhost:4003 ~> website
+		http://localhost:4004 ~> sign_verifier
+
+
 
 <h4>	4.	Precomputation for the simulation in order:</h4>
 
