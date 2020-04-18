@@ -65,6 +65,7 @@ See for more options: http://man7.org/linux/man-pages/man1/taskset.1.html
 		it must be placed in `new_users.json` file in `data/de/raw` directory. 
 		Also, the file should not include `[` in the beginning of the file and `]` in the end. 
 		Each record in the file must be in JSON format and the records must be splitted only with newline. 
+		This is already done by the Bigquery on this day, this note is for possible future changes.
 		e.g. 
 		{"author": "abc"}
 		{"author": "def"}
@@ -83,8 +84,10 @@ See for more options: http://man7.org/linux/man-pages/man1/taskset.1.html
 <h4>	3.	Build the applications:</h4>
 
 	-	Run `docker-compose up --build -d` in the main directory. 
-		This will build the trollthrottle applications and the simulator in the directory and 
-		it might take a long time in the first run, but changes in the data and the simulation code 
+		This will build the trollthrottle applications, mysql server, mysql admin, 
+		nginx web server and the simulator. 
+		It might take a long time in the first run. 
+		But changes in the data and the simulation code 
 		in the front-end Nodejs applications will not require a new build. 
 		However, nginx, startup.sh and mysql changes will require a new build. 
 		
@@ -143,5 +146,9 @@ See for more options: http://man7.org/linux/man-pages/man1/taskset.1.html
 		For comment verification performance analysis, you can align the logs and 
 		aggregate them with the ones in `data/de/result` folder.
  
+ <h4>	7.	Stop Application:</h4>
+ 	-	To stop the applications you can use the command below.
+
+ 		`docker-compose down` 
 
 
