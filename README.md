@@ -78,6 +78,7 @@ such that:
 	-	Assign the cores with core-ids to the applications in the `startup.sh` files, as presented above.
 
 	-	Clean logs of the applications. A bash script `clean_logs.sh` presented in the main directory.
+		Use this with care; if you have already run any simulations it will delete the results.
 
 	-	Assign your time zone for simulator in the bottom of `docker-compose.yml` file. 
 		The default time zone value is `Europe/Berlin`.
