@@ -132,7 +132,7 @@ such that:
 		It is also important to give enough time for the simulator to read the precomputation!
 		Hence, you can assign the time for 15 minutes later than current time for the `de` scenario.
 		(for the `nytimes` at least 20 minutes, for the `reddit` at least 90 minutes).
-		The date given in the example below will start the commenting action timer at '15 April 2020 13:10'. 
+		The date given in the example below starts the commenting action timer at '15 April 2020 13:10'. 
 		The sequence for months starts from 0, hence the sequence number for April is given 3. 
 
 		`docker-compose exec simulator bash -c \ 
