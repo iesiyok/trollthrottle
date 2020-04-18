@@ -1,4 +1,4 @@
-<h2>Project Title</h2>
+<h2>Trollthrottle</h2>
 
 This is the implementation of Trollthrottle protocol. For information about the protocol, please refer to full version of our research paper($link).
 
